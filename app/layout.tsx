@@ -32,6 +32,34 @@ const nunito = localFont({
   display: "swap",
 });
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className="scroll-smooth scroll-pt-8 motion-reduce:scroll-auto"><body className={`${nunito.className} min-h-screen bg-[#faf9f5] text-base leading-[1.6] text-[#252d29]`}><LibraryProvider><a className="fixed top-[-100px] left-5 z-[100] bg-[#174e3b] px-5 py-3 text-white focus:top-2.5 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#367557]" href="#main-content">Skip to content</a><SiteHeader /><main id="main-content" className="mx-auto w-[calc(100%-32px)] min-[561px]:w-[calc(100%-40px)] min-[761px]:w-[calc(100%-48px)] min-[1101px]:max-w-[1200px] min-[1101px]:w-[calc(100%-80px)] min-h-[calc(100vh-252px)] pb-16">{children}</main><SiteFooter /></LibraryProvider></body></html>;
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html
+      lang="en"
+      className="scroll-smooth scroll-pt-8 motion-reduce:scroll-auto"
+    >
+      <body
+        className={`${nunito.className} min-h-screen bg-[#faf9f5] text-base leading-[1.6] text-[#252d29] dark:bg-[#17211b] dark:text-[#edf2ec]`}
+      >
+        <LibraryProvider>
+          <a
+            className="fixed top-[-100px] left-5 z-[100] bg-[#174e3b] px-5 py-3 text-white focus:top-2.5 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#367557]"
+            href="#main-content"
+          >
+            Skip to content
+          </a>
+          <SiteHeader />
+          <main
+            id="main-content"
+            className="mx-auto min-h-[calc(100vh-252px)] w-[calc(100%-32px)] pb-16 min-[561px]:w-[calc(100%-40px)] min-[761px]:w-[calc(100%-48px)] min-[1101px]:w-[calc(100%-80px)] min-[1101px]:max-w-[1200px]"
+          >
+            {children}
+          </main>
+          <SiteFooter />
+        </LibraryProvider>
+      </body>
+    </html>
+  );
 }
